@@ -1,4 +1,4 @@
-import Home, { HomeTemplateProps } from 'components/templates/Home'
+import Home, { HomeTemplateProps } from 'templates/Home'
 import bannerMock from 'components/BannerSlider/mock'
 import gamesMock from 'components/GameCardSlider/mock'
 import highlightMock from 'components/Highlight/mock'
