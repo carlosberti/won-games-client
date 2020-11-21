@@ -3,6 +3,7 @@ import { Menu2 as MenuIcon } from '@styled-icons/remix-fill/Menu2'
 import { ShoppingCart as ShoppingCartIcon } from '@styled-icons/material-outlined/ShoppingCart'
 import { Search as SearchIcon } from '@styled-icons/material-outlined/Search'
 import { Close as CloseIcon } from '@styled-icons/material-outlined/Close'
+import Link from 'next/link'
 
 import * as s from './styles'
 import Logo from 'components/Logo'
@@ -44,7 +45,9 @@ const Menu = ({ username }: MenuProps) => {
         </s.IconWrapper>
         {!username && (
           <MediaMatch greaterThan="medium">
-            <Button>Sing in</Button>
+            <Link href="/sign-in" passHref>
+              <Button as="a">Sing in</Button>
+            </Link>
           </MediaMatch>
         )}
       </s.MenuGroup>
@@ -63,13 +66,15 @@ const Menu = ({ username }: MenuProps) => {
         </s.MenuNav>
         {!username && (
           <s.RegisterBox>
-            <Button fullWidth size="large">
-              Log in now
-            </Button>
+            <Link href="/sign-in" passHref>
+              <Button fullWidth size="large" as="a">
+                Sign in
+              </Button>
+            </Link>
             <span>or</span>
-            <s.CreateAccount href="#" title="Sign Up">
-              Sign Up
-            </s.CreateAccount>
+            <Link href="/sign-up" passHref>
+              <s.CreateAccount title="Sign Up">Sign Up</s.CreateAccount>
+            </Link>
           </s.RegisterBox>
         )}
       </s.MenuFull>
