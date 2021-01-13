@@ -26,12 +26,18 @@ const Menu = ({ username }: MenuProps) => {
       </MediaMatch>
 
       <s.LogoWrapper>
-        <Logo hideOnMobile />
+        <Link href="/" passHref>
+          <a>
+            <Logo hideOnMobile />
+          </a>
+        </Link>
       </s.LogoWrapper>
 
       <MediaMatch greaterThan="medium">
         <s.MenuNav>
-          <s.MenuLink href="#">Home</s.MenuLink>
+          <Link href="/" passHref>
+            <s.MenuLink>Home</s.MenuLink>
+          </Link>
           <s.MenuLink href="#">Explore</s.MenuLink>
         </s.MenuNav>
       </MediaMatch>
@@ -55,7 +61,9 @@ const Menu = ({ username }: MenuProps) => {
       <s.MenuFull isOpen={isOpen} aria-hidden={!isOpen}>
         <CloseIcon aria-label="Close Menu" onClick={() => setIsOpen(false)} />
         <s.MenuNav>
-          <s.MenuLink href="#">Home</s.MenuLink>
+          <Link href="/" passHref>
+            <s.MenuLink href="#">Home</s.MenuLink>
+          </Link>
           <s.MenuLink href="#">Explore</s.MenuLink>
           {!!username && (
             <>
