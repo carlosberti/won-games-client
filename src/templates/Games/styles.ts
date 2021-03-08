@@ -26,3 +26,8 @@ export const ShowMore = styled.div`
     }
   `}
 `
+
+export const LoadingSpinnerWrapper = styled.div`
+  align-self: center;
+  justify-self: center;
+`
