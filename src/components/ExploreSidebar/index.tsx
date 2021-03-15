@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import CheckBox from 'components/CheckBox'
 import Radio from 'components/Radio'
 import Heading from 'components/Heading'
@@ -37,8 +37,12 @@ const ExploreSidebar = ({
   const [values, setValues] = useState(initialValues)
   const [isOpen, setIsOpen] = useState(false)
 
-  const handleFilter = () => {
+  useEffect(() => {
     onFilter(values)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [values])
+
+  const handleFilterMenu = () => {
     setIsOpen(false)
   }
 
@@ -100,7 +104,7 @@ const ExploreSidebar = ({
       </s.Content>
 
       <s.Footer>
-        <Button fullWidth size="medium" onClick={handleFilter}>
+        <Button fullWidth size="medium" onClick={handleFilterMenu}>
           filter
         </Button>
       </s.Footer>
