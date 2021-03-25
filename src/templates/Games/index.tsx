@@ -3,7 +3,6 @@ import { KeyboardArrowDown as ArrowDown } from '@styled-icons/material-outlined'
 import ExploreSidebar, { ItemProps } from 'components/ExploreSidebar'
 import GameCard from 'components/GameCard'
 import { Grid } from 'components/Grid'
-import LoadingSpinner from 'components/LoadingSpinner'
 import { useQueryGames } from 'graphql/queries/games'
 import { ParsedUrlQueryInput } from 'node:querystring'
 import Base from 'templates/Base'
@@ -20,6 +19,7 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
   const { push, query } = useRouter()
 
   const { data, loading, fetchMore } = useQueryGames({
+    notifyOnNetworkStatusChange: true,
     variables: {
       limit: 15,
       where: parseQueryStringToWhere({ queryString: query, filterItems }),
@@ -27,11 +27,18 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
     }
   })
 
+  if (!data) return <p>loading...</p>
+
+  const { games, gamesConnection } = data
+
+  const hasMoreGames = games.length < (gamesConnection?.values?.length || 0)
+
   const handleFilter = (items: ParsedUrlQueryInput) => {
     push({
       pathname: '/games',
       query: items
     })
+
     return
   }
 
@@ -64,23 +71,27 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
                 {data?.games.map((game) => (
                   <GameCard
                     key={game.slug}
-                    slug={game.slug}
                     title={game.name}
+                    slug={game.slug}
                     developer={game.developers[0].name}
                     img={`http://localhost:1337${game.cover!.url}`}
                     price={game.price}
                   />
                 ))}
               </Grid>
-
-              {loading ? (
-                <s.LoadingSpinnerWrapper aria-label="Spinner de loading">
-                  <LoadingSpinner />
-                </s.LoadingSpinnerWrapper>
-              ) : (
-                <s.ShowMore role="button" onClick={handleShowMore}>
-                  <p>Show More</p>
-                  <ArrowDown size={35} />
+              {hasMoreGames && (
+                <s.ShowMore>
+                  {loading ? (
+                    <s.ShowMoreLoading
+                      src="/img/dots.svg"
+                      alt="Loading more games..."
+                    />
+                  ) : (
+                    <s.ShowMoreButton role="button" onClick={handleShowMore}>
+                      <p>Show More</p>
+                      <ArrowDown size={35} />
+                    </s.ShowMoreButton>
+                  )}
                 </s.ShowMore>
               )}
             </>
