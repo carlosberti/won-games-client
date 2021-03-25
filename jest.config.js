@@ -1,6 +1,6 @@
 module.exports = {
   testEnvironment: 'jsdom',
-  testPathIgnorePatterns: ['/node_modules/', '/.next/', 'src/templates/Games'],
+  testPathIgnorePatterns: ['/node_modules/', '/.next/'],
   collectCoverage: true,
   collectCoverageFrom: [
     'src/**/*.ts(x)?',
@@ -11,8 +11,7 @@ module.exports = {
     '!src/utils/apolloCache.ts',
     '!src/types/**/*.d.ts',
     '!src/graphql/**/*.ts',
-    '!src/**/mock.ts',
-    '!src/templates/Games/*.ts(x)?'
+    '!src/**/mock.ts'
   ],
   setupFilesAfterEnv: ['<rootDir>/.jest/setup.ts'],
   modulePaths: ['<rootDir>/src/', '<rootDir>/.jest'],
