@@ -10,6 +10,7 @@ import Base from 'templates/Base'
 import { parseQueryStringToFilter, parseQueryStringToWhere } from 'utils/filter'
 
 import * as s from './styles'
+import Empty from 'components/Empty'
 
 export type GamesTemplateProps = {
   filterItems: ItemProps[]
@@ -62,23 +63,33 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
           </s.LoadingSpinnerWrapper>
         ) : (
           <section>
-            <Grid>
-              {data?.games.map((game) => (
-                <GameCard
-                  key={game.slug}
-                  slug={game.slug}
-                  title={game.name}
-                  developer={game.developers[0].name}
-                  img={`http://localhost:1337${game.cover!.url}`}
-                  price={game.price}
-                />
-              ))}
-            </Grid>
+            {data?.games.length ? (
+              <>
+                <Grid>
+                  {data?.games.map((game) => (
+                    <GameCard
+                      key={game.slug}
+                      slug={game.slug}
+                      title={game.name}
+                      developer={game.developers[0].name}
+                      img={`http://localhost:1337${game.cover!.url}`}
+                      price={game.price}
+                    />
+                  ))}
+                </Grid>
 
-            <s.ShowMore role="button" onClick={handleShowMore}>
-              <p>Show More</p>
-              <ArrowDown size={35} />
-            </s.ShowMore>
+                <s.ShowMore role="button" onClick={handleShowMore}>
+                  <p>Show More</p>
+                  <ArrowDown size={35} />
+                </s.ShowMore>
+              </>
+            ) : (
+              <Empty
+                title=":("
+                description="We didn't find any games with this filter"
+                hasLink
+              />
+            )}
           </section>
         )}
       </s.Main>
