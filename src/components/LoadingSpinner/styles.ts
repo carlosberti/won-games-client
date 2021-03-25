@@ -8,11 +8,11 @@ const spinningAnimation = keyframes`
 
 export const Loader = styled.div`
   ${({ theme }) => css`
-    width: 6rem;
-    height: 6rem;
+    width: 4rem;
+    height: 4rem;
     border-radius: 50%;
-    border: 0.6rem solid ${theme.colors.black};
+    border: 0.4rem solid ${theme.colors.black};
     border-left-color: ${theme.colors.primary};
-    animation: ${spinningAnimation} 1s linear infinite;
+    animation: ${spinningAnimation} 0.5s linear infinite;
   `}
 `

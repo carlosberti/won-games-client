@@ -57,41 +57,41 @@ const GamesTemplate = ({ filterItems }: GamesTemplateProps) => {
           items={filterItems}
           onFilter={handleFilter}
         />
-        {loading ? (
-          <s.LoadingSpinnerWrapper>
-            <LoadingSpinner />
-          </s.LoadingSpinnerWrapper>
-        ) : (
-          <section>
-            {data?.games.length ? (
-              <>
-                <Grid>
-                  {data?.games.map((game) => (
-                    <GameCard
-                      key={game.slug}
-                      slug={game.slug}
-                      title={game.name}
-                      developer={game.developers[0].name}
-                      img={`http://localhost:1337${game.cover!.url}`}
-                      price={game.price}
-                    />
-                  ))}
-                </Grid>
+        <section>
+          {data?.games.length ? (
+            <>
+              <Grid>
+                {data?.games.map((game) => (
+                  <GameCard
+                    key={game.slug}
+                    slug={game.slug}
+                    title={game.name}
+                    developer={game.developers[0].name}
+                    img={`http://localhost:1337${game.cover!.url}`}
+                    price={game.price}
+                  />
+                ))}
+              </Grid>
 
+              {loading ? (
+                <s.LoadingSpinnerWrapper aria-label="Spinner de loading">
+                  <LoadingSpinner />
+                </s.LoadingSpinnerWrapper>
+              ) : (
                 <s.ShowMore role="button" onClick={handleShowMore}>
                   <p>Show More</p>
                   <ArrowDown size={35} />
                 </s.ShowMore>
-              </>
-            ) : (
-              <Empty
-                title=":("
-                description="We didn't find any games with this filter"
-                hasLink
-              />
-            )}
-          </section>
-        )}
+              )}
+            </>
+          ) : (
+            <Empty
+              title=":("
+              description="We didn't find any games with this filter"
+              hasLink
+            />
+          )}
+        </section>
       </s.Main>
     </Base>
   )
