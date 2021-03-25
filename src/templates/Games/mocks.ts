@@ -25,6 +25,7 @@ export const gamesQueryMock = {
     data: {
       games: [
         {
+          id: '1',
           name: 'Sample Game',
           slug: 'sample-game',
           cover: {
@@ -52,6 +53,7 @@ export const gamesFetchMoreMock = {
     data: {
       games: [
         {
+          id: '2',
           name: 'Fetch More Game',
           slug: 'fetch-more-game',
           cover: {
