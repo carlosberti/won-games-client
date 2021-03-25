@@ -5,7 +5,7 @@ import cardsMock from 'components/PaymentOptions/mock'
 import { QueryRecommended } from 'graphql/generated/QueryRecommended'
 import { QUERY_RECOMMENDED } from 'graphql/queries/recommended'
 import { initializeApollo } from 'utils/apollo'
-import { gamesMapper, highlighMapper } from 'utils/mappers'
+import { gamesMapper, highlightMapper } from 'utils/mappers'
 
 export default function CartPage(props: CartProps) {
   return <Cart {...props} />
@@ -25,7 +25,9 @@ export async function getServerSideProps() {
       cards: cardsMock,
       recommendedTitle: data.recommended?.section?.title,
       recommendedGames: gamesMapper(data.recommended?.section?.games),
-      recommendedHighlight: highlighMapper(data.recommended?.section?.highlight)
+      recommendedHighlight: highlightMapper(
+        data.recommended?.section?.highlight
+      )
     }
   }
 }

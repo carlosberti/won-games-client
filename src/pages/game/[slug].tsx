@@ -10,7 +10,7 @@ import {
 import { GetStaticProps } from 'next'
 import { QueryRecommended } from 'graphql/generated/QueryRecommended'
 import { QUERY_RECOMMENDED } from 'graphql/queries/recommended'
-import { gamesMapper, highlighMapper } from 'utils/mappers'
+import { gamesMapper, highlightMapper } from 'utils/mappers'
 import {
   QueryUpcoming,
   QueryUpcomingVariables
@@ -97,7 +97,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       },
       upcomingTitle: upcomingGames.showcase?.upcomingGames?.title,
       upcomingGames: gamesMapper(upcomingGames.upcomingGames),
-      upcomingHighlight: highlighMapper(
+      upcomingHighlight: highlightMapper(
         upcomingGames.showcase?.upcomingGames?.highlight
       ),
       recommendedTitle: recommended.recommended?.section?.title,

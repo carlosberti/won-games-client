@@ -2,7 +2,7 @@ import Home, { HomeTemplateProps } from 'templates/Home'
 import { initializeApollo } from 'utils/apollo'
 import { QueryHome, QueryHomeVariables } from 'graphql/generated/QueryHome'
 import { QUERY_HOME } from 'graphql/queries/home'
-import { bannerMapper, gamesMapper, highlighMapper } from 'utils/mappers'
+import { bannerMapper, gamesMapper, highlightMapper } from 'utils/mappers'
 
 export default function Index(props: HomeTemplateProps) {
   return <Home {...props} />
@@ -29,14 +29,14 @@ export async function getStaticProps() {
       newGamesTitle: sections?.newGames?.title,
       newGames: gamesMapper(newGames),
       mostPopularGamesTitle: sections?.popularGames?.title,
-      mostPopularHighlight: highlighMapper(sections?.popularGames?.highlight),
+      mostPopularHighlight: highlightMapper(sections?.popularGames?.highlight),
       mostPopularGames: gamesMapper(sections!.popularGames!.games),
       upcommingGamesTitle: sections?.upcomingGames?.title,
       upcommingGames: gamesMapper(upcomingGames),
-      upcommingHighlight: highlighMapper(sections?.upcomingGames?.highlight),
+      upcommingHighlight: highlightMapper(sections?.upcomingGames?.highlight),
       freeGamesTitle: sections?.freeGames?.title,
       freeGames: gamesMapper(freeGames),
-      freeHighlight: highlighMapper(sections?.freeGames?.highlight)
+      freeHighlight: highlightMapper(sections?.freeGames?.highlight)
     }
   }
 }
