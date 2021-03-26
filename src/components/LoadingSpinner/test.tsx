@@ -1,10 +1,9 @@
-import { renderWithTheme } from 'utils/tests/helpers'
-
 import LoadingSpinner from '.'
+import { render } from 'utils/test-utils'
 
 describe('<LoadingSpinner />', () => {
   it('should render correctly', () => {
-    const { container } = renderWithTheme(<LoadingSpinner />)
+    const { container } = render(<LoadingSpinner />)
 
     expect(container.firstChild).toHaveStyle({
       borderRadius: '50%',
