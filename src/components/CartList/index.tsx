@@ -27,7 +27,7 @@ const CartList = ({ hasButton = false }: CartListProps) => {
         <>
           <s.GamesList>
             {items.map((item) => (
-              <GameItem key={item.title} {...item} />
+              <GameItem key={item.id} {...item} />
             ))}
           </s.GamesList>
 
