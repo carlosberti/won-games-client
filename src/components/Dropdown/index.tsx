@@ -10,6 +10,14 @@ const Dropdown = ({ title, children }: DropdownProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const handleClick = () => {
+    const body = document.body
+
+    if (!isOpen) {
+      body.style.overflowY = 'hidden'
+    } else {
+      body.style.overflowY = 'inherit'
+    }
+
     setIsOpen(!isOpen)
   }
 
