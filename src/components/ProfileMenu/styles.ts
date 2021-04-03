@@ -39,6 +39,7 @@ export const Link = styled.a<LinkProps>`
     text-decoration: none;
     padding: ${theme.spacings.xsmall} ${theme.spacings.small};
     transition: brackground, color, ${theme.transition.default};
+    cursor: pointer;
 
     &:hover {
       background: ${theme.colors.primary};

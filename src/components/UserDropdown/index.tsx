@@ -5,6 +5,7 @@ import {
   ExitToApp
 } from '@styled-icons/material-outlined'
 import Dropdown from 'components/Dropdown'
+import { signOut } from 'next-auth/client'
 import Link from 'next/link'
 
 import * as s from './styles'
@@ -36,12 +37,10 @@ const UserDropdown = ({ username }: UserDropdownProps) => (
           <span>Wishlist</span>
         </s.Link>
       </Link>
-      <Link href="/logout" passHref>
-        <s.Link>
-          <ExitToApp />
-          <span>Sign out</span>
-        </s.Link>
-      </Link>
+      <s.Link role="button" onClick={() => signOut()}>
+        <ExitToApp />
+        <span>Sign out</span>
+      </s.Link>
     </s.Nav>
   </Dropdown>
 )
