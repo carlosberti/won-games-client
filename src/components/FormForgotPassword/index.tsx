@@ -12,12 +12,12 @@ import {
   FormError
 } from 'components/Form'
 import { useState } from 'react'
-import { FiledErrors, forgotValidate } from 'utils/validations'
+import { FieldErrors, forgotValidate } from 'utils/validations'
 
 const FormForgotPassword = () => {
   const [success, setSuccess] = useState(false)
   const [formError, setFormError] = useState('')
-  const [fieldError, setFieldError] = useState<FiledErrors>({})
+  const [fieldError, setFieldError] = useState<FieldErrors>({})
   const [values, setValues] = useState({ email: '' })
   const [loading, setLoading] = useState(false)
 

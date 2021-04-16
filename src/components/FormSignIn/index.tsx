@@ -7,11 +7,11 @@ import { FormWrapper, FormLink, FormLoading, FormError } from 'components/Form'
 import { useState } from 'react'
 import { signin } from 'next-auth/client'
 import { useRouter } from 'next/router'
-import { FiledErrors, signInValidate } from 'utils/validations'
+import { FieldErrors, signInValidate } from 'utils/validations'
 
 const FormSignIn = () => {
   const [formError, setFormError] = useState('')
-  const [fieldError, setFieldError] = useState<FiledErrors>({})
+  const [fieldError, setFieldError] = useState<FieldErrors>({})
   const [values, setValues] = useState({ email: '', password: '' })
   const [loading, setLoading] = useState(false)
   const { push, query } = useRouter()

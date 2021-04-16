@@ -15,11 +15,11 @@ import { UsersPermissionsRegisterInput } from 'graphql/generated/globalTypes'
 import { useMutation } from '@apollo/client'
 import { MUTATION_REGISTER } from 'graphql/mutations/register'
 import { signIn } from 'next-auth/client'
-import { FiledErrors, signUpValidate } from 'utils/validations'
+import { FieldErrors, signUpValidate } from 'utils/validations'
 
 const FormSignUp = () => {
   const [formError, setFormError] = useState('')
-  const [fieldError, setFieldError] = useState<FiledErrors>({})
+  const [fieldError, setFieldError] = useState<FieldErrors>({})
   const [values, setValues] = useState<UsersPermissionsRegisterInput>({
     username: '',
     email: '',

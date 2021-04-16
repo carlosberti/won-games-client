@@ -15,12 +15,12 @@ const fieldsValidations = {
     })
 }
 
-export type FiledErrors = {
+export type FieldErrors = {
   [key: string]: string
 }
 
 function getFieldErrors(objError: Joi.ValidationResult) {
-  const errors: FiledErrors = {}
+  const errors: FieldErrors = {}
 
   if (objError.error) {
     objError.error.details.forEach((err) => {
@@ -58,7 +58,7 @@ export function forgotValidate(values: ForgotValidateParams) {
 
 type ResetValidateParams = {
   password: string
-  confirmPassword: string
+  confirm_password: string
 }
 
 export function resetValidate(values: ResetValidateParams) {
