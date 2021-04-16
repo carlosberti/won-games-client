@@ -5,7 +5,7 @@ import { FormWrapper, FormLoading, FormError } from 'components/Form'
 import { useState } from 'react'
 import { signin } from 'next-auth/client'
 import { useRouter } from 'next/router'
-import { FiledErrors } from 'utils/validations'
+import { FiledErrors, forgotValidate } from 'utils/validations'
 
 const FormForgotPassword = () => {
   const [formError, setFormError] = useState('')
@@ -22,7 +22,7 @@ const FormForgotPassword = () => {
     e.preventDefault()
     setLoading(true)
 
-    const errors = {} // validate after
+    const errors = forgotValidate(values)
 
     if (Object.keys(errors).length) {
       setFieldError(errors)
