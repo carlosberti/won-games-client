@@ -12,10 +12,10 @@ declare module 'next-auth/client' {
   }
 
   export function signin(
-    provider: 'credentials' | 'email' | 'string',
+    provider?: string,
     data?: GenericObject & {
       callbackUrl?: string
-      redirect?: false
+      redirect?: boolean
     },
     authorizationParams?: string | string[][] | GenericObject | URLSearchParams
   ): Promise<SignInResponse>
