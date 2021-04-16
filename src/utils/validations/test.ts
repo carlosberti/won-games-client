@@ -87,12 +87,27 @@ describe('validations', () => {
 
   describe('resetValidate()', () => {
     it('should validate empty fields', () => {
-      const values = { password: '', confirmPassword: '' }
+      const values = { password: '', confirm_password: '' }
 
       expect(resetValidate(values)).toMatchObject({
-        password: expect.any(String),
-        confirm_password: expect.any(String)
+        password: expect.any(String)
       })
+    })
+
+    it('should validate confirm password when empty', () => {
+      const values = { password: '123', confirm_password: '' }
+
+      expect(resetValidate(values).confirm_password).toMatchInlineSnapshot(
+        `"\\"confirm_password\\" is not allowed to be empty"`
+      )
+    })
+
+    it('should validate confirm password when different', () => {
+      const values = { password: '123', confirm_password: '321' }
+
+      expect(resetValidate(values).confirm_password).toMatchInlineSnapshot(
+        `"confirm password does not match password"`
+      )
     })
   })
 })
